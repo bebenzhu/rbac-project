@@ -15,8 +15,16 @@
     <!-- 扫描service包下所有使用注解的类型 -->
     <context:component-scan base-package="com.ssm.service"/>
 
-    <import resource="classpath:org/spring/spring-jdbc.xml"/>
+
+
+
+
+    <import resource="classpath:org/spring/spring-jdbc-druid.xml"/>
     <import resource="classpath:org/spring/spring-mybatis.xml"/>
+
+
+
+
 
 
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
