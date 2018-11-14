@@ -3,16 +3,17 @@ package com.ssm.service.impl;
 import com.ssm.dao.IUserDao;
 import com.ssm.model.User;
 import com.ssm.service.IUserService;
-import org.springframework.context.ApplicationContext;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Service;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.HashMap;
 import java.util.Map;
 
 @Service("userService")
 public class UserServiceImpl implements IUserService {
+
+//    private static Logger logger = Logger.getLogger(Log4jTest.class);
 
     @Autowired
     private IUserDao userDao;
