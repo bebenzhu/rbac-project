@@ -16,20 +16,14 @@
     <context:component-scan base-package="com.ssm.service"/>
 
 
-
-
-
     <import resource="classpath:org/spring/spring-jdbc-druid.xml"/>
-    <import resource="classpath:org/spring/spring-mybatis.xml"/>
-
-
-
-
-
-
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
         <property name="dataSource" ref="dataSource"/>
     </bean>
+    <bean id="namedParameterJdbcTemplate" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
+        <constructor-arg ref="dataSource"/>
+    </bean>
+    <import resource="classpath:org/spring/spring-mybatis.xml"/>
 
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource"></property>
