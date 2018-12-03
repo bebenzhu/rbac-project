@@ -1,9 +1,8 @@
 package com.ssm.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ssm.model.User;
 import com.ssm.service.IUserService;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +20,9 @@ public class UserController {
 
     @RequestMapping("/showUser.do")
     public void selectUser(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+
+
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
         long userId = Long.parseLong(request.getParameter("id"));
