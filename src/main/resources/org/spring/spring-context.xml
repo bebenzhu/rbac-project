@@ -18,13 +18,13 @@
 
     <import resource="classpath:org/spring/spring-jdbc-druid.xml"/>
     <import resource="classpath:org/spring/spring-restfull.xml"/>
+    <import resource="classpath:org/spring/spring-mybatis.xml"/>
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
         <property name="dataSource" ref="dataSource"/>
     </bean>
     <bean id="namedParameterJdbcTemplate" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
         <constructor-arg ref="dataSource"/>
     </bean>
-    <import resource="classpath:org/spring/spring-mybatis.xml"/>
 
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource"></property>
@@ -32,5 +32,13 @@
     <tx:annotation-driven transaction-manager="transactionManager"/>
 
     <bean class="com.ssm.rbac.spring.ContextHolder" lazy-init="false"/>
+    <bean id="propertyPlaceholder" class="com.ssm.rbac.spring.PropertyPlaceholder">
+        <property name="locations">
+            <list>
+                <value>classpath:jdbc.properties</value>
+                <value>classpath:config.properties</value>
+            </list>
+        </property>
+    </bean>
 
 </beans>

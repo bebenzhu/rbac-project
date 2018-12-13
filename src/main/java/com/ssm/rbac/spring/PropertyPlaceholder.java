@@ -10,12 +10,8 @@ import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
 import org.springframework.util.PropertyPlaceholderHelper;
 
-
 /**
- * 
- * @author 杨松<syang@amarsoft.com>
- * @date 2016年9月5日
- * FixedV1.1:增加占位符替换处理  史光华<ghshi@amarsoft.com> 2016/10/20
+ * 获取配置文件信息
  */
 public class PropertyPlaceholder extends PropertyPlaceholderConfigurer {  
   

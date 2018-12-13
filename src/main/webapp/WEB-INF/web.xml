@@ -76,7 +76,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>RestfullServlet</servlet-name>
-    <url-pattern>/webapi/resf/*</url-pattern>
+    <url-pattern>/rbac/resf/*</url-pattern>
   </servlet-mapping>
 
 </web-app>
