@@ -50,6 +50,7 @@
     <param-value>classpath:org/spring/spring-context.xml</param-value>
   </context-param>
 
+  <!--Servlet-->
   <!-- 配置SpringMVC的DispatcherServlet -->
   <servlet>
     <servlet-name>SpringMVC</servlet-name>
@@ -64,7 +65,18 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>SpringMVC</servlet-name>
-    <url-pattern>/</url-pattern>
+    <url-pattern>/system/*</url-pattern>
+  </servlet-mapping>
+
+  <!-- 配置SpringMVC的DispatcherServlet -->
+  <servlet>
+    <servlet-name>RestfullServlet</servlet-name>
+    <servlet-class>com.ssm.rbac.rest.servlet.RestfullServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RestfullServlet</servlet-name>
+    <url-pattern>/webapi/resf/*</url-pattern>
   </servlet-mapping>
 
 </web-app>

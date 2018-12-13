@@ -24,8 +24,8 @@ public class UserServiceImpl implements IUserService {
     @Override
     public User selectUser(long userId) {
         Map<String,Object> param = new HashMap<String,Object>();
-        param.put("id","1");
-        Map<String,Object> result = namedParameterJdbcTemplate.queryForMap("SELECT * FROM user WHERE id=:id", param);
+        param.put("id","chenhao");
+        Map<String,Object> result = namedParameterJdbcTemplate.queryForMap("SELECT * FROM rbac_user WHERE userid=:id", param);
 //        return this.userDao.selectUser(userId);
         User user = new User();
         user.setId(1);
