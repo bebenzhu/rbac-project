@@ -61,6 +61,18 @@
       <artifactId>commons-lang3</artifactId>
       <version>3.4</version>
     </dependency>
+    <!-- word处理jar -->
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi</artifactId>
+      <version>3.17</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi-ooxml</artifactId>
+      <version>3.17</version>
+    </dependency>
+
     <!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
     <dependency>
       <groupId>commons-io</groupId>
