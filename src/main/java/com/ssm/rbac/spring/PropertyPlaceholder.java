@@ -39,7 +39,7 @@ public class PropertyPlaceholder extends PropertyPlaceholderConfigurer {
         return ctxPropertiesMap.get(name);  
     }  
     public static String getProperty(String name) {  
-    	if("rax.biz.data.path".equals(name))
+    	if("rbac.file.path".equals(name))
     		return (String)getContextProperty(name)+"/"/*+ DateUtils.getTodayTime("yyyyMMdd")*/;
     	else
     		return (String)getContextProperty(name);  

@@ -52,23 +52,32 @@
 
   <!--Servlet-->
   <!-- 配置SpringMVC的DispatcherServlet -->
-  <servlet>
-    <servlet-name>SpringMVC</servlet-name>
-    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-    <!-- 配置springMVC需要加载的配置文件-->
-    <init-param>
-      <param-name>contextConfigLocation</param-name>
-      <param-value>classpath:org/spring/spring-mvc.xml</param-value>
-    </init-param>
-    <load-on-startup>1</load-on-startup>
-    <async-supported>true</async-supported>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>SpringMVC</servlet-name>
-    <url-pattern>/system/*</url-pattern>
-  </servlet-mapping>
+  <!--<servlet>-->
+    <!--<servlet-name>SpringMVC</servlet-name>-->
+    <!--<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>-->
+    <!--&lt;!&ndash; 配置springMVC需要加载的配置文件&ndash;&gt;-->
+    <!--<init-param>-->
+      <!--<param-name>contextConfigLocation</param-name>-->
+      <!--<param-value>classpath:org/spring/spring-mvc.xml</param-value>-->
+    <!--</init-param>-->
+    <!--<load-on-startup>1</load-on-startup>-->
+    <!--<async-supported>true</async-supported>-->
+  <!--</servlet>-->
+  <!--<servlet-mapping>-->
+    <!--<servlet-name>SpringMVC</servlet-name>-->
+    <!--<url-pattern>/system/*</url-pattern>-->
+  <!--</servlet-mapping>-->
 
-  <!-- 配置SpringMVC的DispatcherServlet -->
+
+  <filter>
+    <filter-name>HttpRequestContentFilter</filter-name>
+    <filter-class>com.ssm.filter.HttpOptionsFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>HttpRequestContentFilter</filter-name>
+    <url-pattern>/rbac/resf/*</url-pattern>
+  </filter-mapping>
+   <!--配置SpringMVC的DispatcherServlet-->
   <servlet>
     <servlet-name>RestfullServlet</servlet-name>
     <servlet-class>com.ssm.rbac.rest.servlet.RestfullServlet</servlet-class>
