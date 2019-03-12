@@ -220,7 +220,7 @@ public class TemplateCatalogEntity {
 
                 JSONObject code = new JSONObject();
                 code.put("id",itemNo);
-                code.put("lable",itemName);
+                code.put("name",itemName);
                 codeArray.add(code);
 
                 this.codeMap.put(codeNo, codeArray);

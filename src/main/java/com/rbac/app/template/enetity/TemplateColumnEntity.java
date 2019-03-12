@@ -114,6 +114,6 @@ public class TemplateColumnEntity {
     public String toString() {
         return "{\"templateNo\":\"" + templateNo + "\",\"columnLabel\":\"" + columnLabel + "\",\"columnProp\":\"" + columnProp + "\",\"columnName\":\"" + columnName
                 + "\",\"columnTable\":\"" + columnTable + "\",\"sortNo\":\"" + sortNo + "\",\"isVisible\":\"" + isVisible + "\",\"isSum\":\"" + isSum
-                + "\",\"type\":\"" + type + "\",\"width\":\"" + width +"\",\"isReadonly\":\""+isReadonly+"\"}";
+                + "\",\"type\":\"" + type + "\",\"width\":\"" + width +"\",\"isReadonly\":\""+isReadonly+"\",\"codeNo\":\""+codeNo+"\"}";
     }
 }
