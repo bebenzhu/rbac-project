@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context.xsd
+                           http://www.springframework.org/schema/tx
+                           http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <!-- Restfull webapi 自动扫描包设置，路径可以使用ant-style格式的路径通配 -->
+    <bean class="com.rbac.system.rest.service.impl.RestfullDispatcherImpl">
+        <property name="packages">
+            <list>
+                <value>com.rbac.restcontroller.**.*</value>
+            </list>
+        </property>
+    </bean>
+
+</beans>
