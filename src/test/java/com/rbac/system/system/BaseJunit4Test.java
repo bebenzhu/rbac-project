@@ -1,4 +1,4 @@
-package com.ssm.rbac.system;
+package com.rbac.system.system;
 
 
 import org.junit.runner.RunWith;

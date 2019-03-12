@@ -1,4 +1,4 @@
-package com.ssm.rbac.rest.service;
+package com.rbac.system.rest.service;
 
 import java.io.IOException;
 

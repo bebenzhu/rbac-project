@@ -1,10 +1,9 @@
-package com.ssm.rbac.spring;
+package com.rbac.system.spring;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
-import com.ssm.utils.DateUtils;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
@@ -39,7 +38,7 @@ public class PropertyPlaceholder extends PropertyPlaceholderConfigurer {
         return ctxPropertiesMap.get(name);  
     }  
     public static String getProperty(String name) {  
-    	if("rbac.file.path".equals(name))
+    	if("system.file.path".equals(name))
     		return (String)getContextProperty(name)+"/"/*+ DateUtils.getTodayTime("yyyyMMdd")*/;
     	else
     		return (String)getContextProperty(name);  

@@ -75,6 +75,10 @@
       <option name="checkTestFiles" value="false" />
     </inspection_tool>
     <inspection_tool class="StringBufferReplaceableByStringBuilder" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="StringConcatenationInsideStringBufferAppend" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="StringConstructor" enabled="false" level="WARNING" enabled_by_default="false">
+      <option name="ignoreSubstringArguments" value="false" />
+    </inspection_tool>
     <inspection_tool class="ThrowFromFinallyBlock" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="TryWithIdenticalCatches" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="UNCHECKED_WARNING" enabled="false" level="WARNING" enabled_by_default="false" />

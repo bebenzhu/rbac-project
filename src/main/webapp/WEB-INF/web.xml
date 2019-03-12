@@ -71,7 +71,7 @@
 
   <filter>
     <filter-name>HttpRequestContentFilter</filter-name>
-    <filter-class>com.ssm.filter.HttpOptionsFilter</filter-class>
+    <filter-class>com.rbac.filter.HttpOptionsFilter</filter-class>
   </filter>
   <filter-mapping>
     <filter-name>HttpRequestContentFilter</filter-name>
@@ -80,7 +80,7 @@
    <!--配置SpringMVC的DispatcherServlet-->
   <servlet>
     <servlet-name>RestfullServlet</servlet-name>
-    <servlet-class>com.ssm.rbac.rest.servlet.RestfullServlet</servlet-class>
+    <servlet-class>com.rbac.system.rest.servlet.RestfullServlet</servlet-class>
     <load-on-startup>1</load-on-startup>
   </servlet>
   <servlet-mapping>

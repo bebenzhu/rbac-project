@@ -13,7 +13,7 @@
     <!-- 开启注解 扫描web相关的bean -->
     <context:annotation-config/>
     <!-- 扫描web相关的bean -->
-    <context:component-scan base-package="com.ssm.controller"/>
+    <context:component-scan base-package="com.rbac.controller"/>
 
     <!-- 开启SpringMVC注解模式 -->
     <mvc:annotation-driven/>
@@ -23,7 +23,7 @@
 
     <mvc:interceptors>
         <!--  使用bean定义一个Interceptor，直接定义在mvc:interceptors根下面的Interceptor将拦截所有的请求   -->
-        <bean class="com.ssm.interceptor.RequestInterceptor"/>
+        <bean class="com.rbac.interceptor.RequestInterceptor"/>
     </mvc:interceptors>
 
     <!-- 配置jsp 显示ViewResolver -->
