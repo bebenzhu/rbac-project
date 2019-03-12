@@ -7,12 +7,12 @@ public class TemplateColumnEntity {
     private String columnName;
     private String columnTable;
     private String sortNo;
-    private String isVisible;
-    private String isSum;
-    private String type;
-    private String isTemplate;
     private double width;
+    private String isVisible;
     private String isReadonly;
+    private String type;
+    private String codeNo;
+    private String isSum;
 
     public double getWidth() {
         return width;
@@ -94,14 +94,6 @@ public class TemplateColumnEntity {
         this.type = type;
     }
 
-    public String getIsTemplate() {
-        return isTemplate;
-    }
-
-    public void setIsTemplate(String isTemplate) {
-        this.isTemplate = isTemplate;
-    }
-
     public String getIsReadonly() {
         return isReadonly;
     }
@@ -110,10 +102,18 @@ public class TemplateColumnEntity {
         this.isReadonly = isReadonly;
     }
 
+    public String getCodeNo() {
+        return codeNo;
+    }
+
+    public void setCodeNo(String codeNo) {
+        this.codeNo = codeNo;
+    }
+
     @Override
     public String toString() {
         return "{\"templateNo\":\"" + templateNo + "\",\"columnLabel\":\"" + columnLabel + "\",\"columnProp\":\"" + columnProp + "\",\"columnName\":\"" + columnName
                 + "\",\"columnTable\":\"" + columnTable + "\",\"sortNo\":\"" + sortNo + "\",\"isVisible\":\"" + isVisible + "\",\"isSum\":\"" + isSum
-                + "\",\"type\":\"" + type + "\",\"isTemplate\":\"" + isTemplate + "\",\"width\":\"" + width +"\",\"isReadonly\":\""+isReadonly+"\"}";
+                + "\",\"type\":\"" + type + "\",\"width\":\"" + width +"\",\"isReadonly\":\""+isReadonly+"\"}";
     }
 }

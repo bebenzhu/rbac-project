@@ -30,14 +30,14 @@ public class TemplateCatalogEntity {
     private String sql;
     /*模板列*/
     private List<TemplateColumnEntity> columnList;
-    private boolean isPage = false;
-    /*查询页码*/
+    /** 查询页码 */
     private int currentPage = 1;
-    /*分页条数*/
+    /** 分页条数 */
     private int pageSize = 15;
-    /*查询参数*/
+    /** 查询参数 */
     private JSONObject sqlParam;
-
+    /** 字段码表 */
+    private JSONObject codeMap;
 
     public TemplateCatalogEntity(String templateNo) throws Exception {
         this.templateNo = templateNo;
@@ -71,6 +71,7 @@ public class TemplateCatalogEntity {
         spliceFromSql();
         spliceSelectSql();
         setSql(this.selectSql+this.fromSql);
+        initCodeMap();
     }
 
     /**
@@ -100,7 +101,7 @@ public class TemplateCatalogEntity {
         if(StringUtils.isBlank(this.templateNo))return;
         Map<String,Object> param = new HashMap<String,Object>();
         param.put("TemplateNo",this.templateNo);
-        String querySql = "select ColumnLabel,ColumnProp,ColumnName,ColumnTable,SortNo,IsVisible,IsSum,Type,IsTemplate,Width,IsReadonly " +
+        String querySql = "select ColumnLabel,ColumnProp,ColumnName,ColumnTable,SortNo,IsVisible,IsSum,Type,CodeNo,Width,IsReadonly " +
                 "from tem_list_column where TemplateNo=:TemplateNo";
         List<Map<String,Object>> columnList = JdbcTemplateUtils.queryForList(querySql,param);
         if(this.columnList==null) this.columnList = new ArrayList<TemplateColumnEntity>();
@@ -112,12 +113,12 @@ public class TemplateCatalogEntity {
             entity.setColumnLabel(JdbcTemplateUtils.getString(column.get("ColumnLabel")));
             entity.setColumnTable(JdbcTemplateUtils.getString(column.get("ColumnTable")));
             entity.setSortNo(JdbcTemplateUtils.getString(column.get("SortNo")));
-            entity.setIsVisible(JdbcTemplateUtils.getString(column.get("IsVisible")));
-            entity.setIsSum(JdbcTemplateUtils.getString(column.get("IsSum")));
-            entity.setIsTemplate(JdbcTemplateUtils.getString(column.get("IsTemplate")));
-            entity.setType(JdbcTemplateUtils.getString(column.get("Type")));
             entity.setWidth(JdbcTemplateUtils.getDouble(column.get("Width")));
+            entity.setIsVisible(JdbcTemplateUtils.getString(column.get("IsVisible")));
             entity.setIsReadonly(JdbcTemplateUtils.getString(column.get("IsReadonly")));
+            entity.setType(JdbcTemplateUtils.getString(column.get("Type")));
+            entity.setCodeNo(JdbcTemplateUtils.getString(column.get("CodeNo")));
+            entity.setIsSum(JdbcTemplateUtils.getString(column.get("IsSum")));
             addColumnList(entity);
         }
     }
@@ -192,6 +193,26 @@ public class TemplateCatalogEntity {
         }
         return pagingSql;
     }
+
+    /**
+     * 获取列的code映射
+     */
+    private void initCodeMap(){
+        if(this.codeMap==null) this.codeMap = new JSONObject();
+        if(this.columnList==null) return;
+        for(TemplateColumnEntity column:this.columnList){
+            String columnProp = column.getColumnProp();
+            String codeNo = column.getCodeNo();
+            Map<String, Object> param = new HashMap<String, Object>();
+            param.put("CodeNo", codeNo);
+            List<Map<String,Object>> codeItemList = JdbcTemplateUtils.queryForList("select ItemNo,ItemName from code_library where CodeNo=:CodeNo", param);
+            for(Map<String,Object> codeItem:codeItemList){
+
+            }
+
+        }
+    }
+
 
     public void addColumnList(TemplateColumnEntity column){
         this.columnList.add(column);
