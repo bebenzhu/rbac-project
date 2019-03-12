@@ -32,10 +32,10 @@ public class TemplateCtrl {
 
         TemplateListManageService templateListManageService = new TemplateListManageService(templateNo, param);
 
-
         result.put("cloumns",templateListManageService.getTemplateColumns());
         result.put("datas",templateListManageService.getTemplateDatas(currentPage,pageSize));
-        result.put("countNumber",templateListManageService.getQueryDataSize());
+        result.put("queryDataSize",templateListManageService.getQueryDataSize());
+        result.put("codeMap",templateListManageService.getCodeMap());
         return result;
     }
 

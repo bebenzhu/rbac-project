@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.rbac.utils.JdbcTemplateUtils;
 import org.apache.commons.lang3.StringUtils;
+import com.google.common.base.Joiner;
 
 import java.util.*;
 
@@ -200,16 +201,30 @@ public class TemplateCatalogEntity {
     private void initCodeMap(){
         if(this.codeMap==null) this.codeMap = new JSONObject();
         if(this.columnList==null) return;
+
+        Set<String> codeSet = new HashSet<String>();
         for(TemplateColumnEntity column:this.columnList){
-            String columnProp = column.getColumnProp();
-            String codeNo = column.getCodeNo();
-            Map<String, Object> param = new HashMap<String, Object>();
-            param.put("CodeNo", codeNo);
-            List<Map<String,Object>> codeItemList = JdbcTemplateUtils.queryForList("select ItemNo,ItemName from code_library where CodeNo=:CodeNo", param);
+            codeSet.add(column.getCodeNo());
+        }
+        if(codeSet!=null&&codeSet.size()>0){
+            List<Map<String,Object>> codeItemList = JdbcTemplateUtils.queryForList("select CodeNo,ItemNo,ItemName from code_library " +
+                    "where CodeNo in ('"+Joiner.on("','").join(codeSet)+"')", new HashMap<String, Object>());
+
             for(Map<String,Object> codeItem:codeItemList){
+                String codeNo = JdbcTemplateUtils.getString(codeItem.get("CodeNo"));
+                String itemNo = JdbcTemplateUtils.getString(codeItem.get("ItemNo"));
+                String itemName = JdbcTemplateUtils.getString(codeItem.get("ItemName"));
 
+                JSONArray codeArray = this.codeMap.getJSONArray(codeNo);
+                if(codeArray==null) codeArray = new JSONArray();
+
+                JSONObject code = new JSONObject();
+                code.put("id",itemNo);
+                code.put("lable",itemName);
+                codeArray.add(code);
+
+                this.codeMap.put(codeNo, codeArray);
             }
-
         }
     }
 
@@ -331,5 +346,13 @@ public class TemplateCatalogEntity {
 
     public void setOrderBy(String orderBy) {
         this.orderBy = orderBy;
+    }
+
+    public JSONObject getCodeMap() {
+        return codeMap;
+    }
+
+    public void setCodeMap(JSONObject codeMap) {
+        this.codeMap = codeMap;
     }
 }

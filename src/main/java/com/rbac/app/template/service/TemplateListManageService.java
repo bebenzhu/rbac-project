@@ -63,7 +63,13 @@ public class TemplateListManageService {
         return this.catalogEntity.getDataSize();
     }
 
-
+    /**
+     * 获取此模板的code码值映射
+     * @return
+     */
+    public JSONObject getCodeMap(){
+        return this.catalogEntity.getCodeMap();
+    }
 
 
 }
